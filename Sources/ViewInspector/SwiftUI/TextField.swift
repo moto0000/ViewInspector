@@ -42,11 +42,11 @@ public extension InspectableView where View == ViewType.TextField {
         return try View.supplementaryChildren(self).element(at: 0)
     }
     
-    func callOnEditingChanged() throws {
+    func callOnEditingChanged(_ value: Bool = false) throws {
         typealias Callback = (Bool) -> Void
         let callback = try Inspector
             .attribute(label: "onEditingChanged", value: content.view, type: Callback.self)
-        callback(false)
+        callback(value)
     }
     
     func callOnCommit() throws {
